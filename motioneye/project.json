@@ -1,0 +1,62 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "Lets you set a motionEye camera stream as desktop background",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"motioneyeip" : 
+			{
+				"index" : 0,
+				"order" : 100,
+				"text" : "motionEye IP",
+				"type" : "textinput",
+				"value" : "localhost"
+			},
+			"motioneyeport" : 
+			{
+				"index" : 1,
+				"order" : 101,
+				"text" : "motionEye Port",
+				"type" : "textinput",
+				"value" : "8765"
+			},
+			"password" : 
+			{
+				"index" : 3,
+				"order" : 103,
+				"text" : "Password",
+				"type" : "textinput",
+				"value" : ""
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"username" : 
+			{
+				"index" : 2,
+				"order" : 102,
+				"text" : "Username",
+				"type" : "textinput",
+				"value" : "admin"
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"ratingsex" : "none",
+	"ratingviolence" : "none",
+	"snapshotformat" : -1,
+	"snapshotoverlay" : "",
+	"tags" : [ "Technology" ],
+	"title" : "motionEye",
+	"type" : "web",
+	"version" : 1,
+	"visibility" : "public",
+	"workshopid" : "2994769927",
+	"workshopurl" : "steam://url/CommunityFilePage/2994769927"
+}

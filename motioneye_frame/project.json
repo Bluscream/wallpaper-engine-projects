@@ -1,0 +1,62 @@
+{
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"motioneyecamera" : 
+			{
+				"index" : 2,
+				"order" : 102,
+				"text" : "motionEye Camera",
+				"type" : "textinput",
+				"value" : "1"
+			},
+			"motioneyeip" : 
+			{
+				"index" : 0,
+				"order" : 100,
+				"text" : "motionEye IP",
+				"type" : "textinput",
+				"value" : "localhost"
+			},
+			"motioneyepasswordhash" : 
+			{
+				"index" : 4,
+				"order" : 104,
+				"text" : "motionEye Password Hash",
+				"type" : "textinput",
+				"value" : ""
+			},
+			"motioneyeport" : 
+			{
+				"index" : 1,
+				"order" : 101,
+				"text" : "motionEye Port",
+				"type" : "textinput",
+				"value" : "8765"
+			},
+			"motioneyeusername" : 
+			{
+				"index" : 3,
+				"order" : 103,
+				"text" : "motionEye Username",
+				"type" : "textinput",
+				"value" : "admin"
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"snapshotformat" : -1,
+	"snapshotoverlay" : "",
+	"title" : "motionEye (Frame)",
+	"type" : "web",
+	"version" : 0
+}

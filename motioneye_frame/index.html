@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <title>CCTV</title>
+  <style>
+    body{
+        margin: 0; /* Remove default margin */
+    }
+    iframe{      
+        display: block;  /* iframes are inline by default */   
+        height: 100vh;  /* Set height to 100% of the viewport height */   
+        width: 100vw;  /* Set width to 100% of the viewport width */     
+        border: none; /* Remove default border */
+        background: lightyellow; /* Just for styling */
+    }
+  </style>
+</head>
+<body>
+  <iframe id="streetFrame" src="#"></iframe>
+  <script>
+    console.log("Page loading...");
+    // var div = document.getElementById("streetFrame");
+    // div.onload = function() {
+    //   // div.style.height = div.contentWindow.document.body.scrollHeight + 'px';
+    // }http://192.168.2.47:8765/picture/1/frame/
+    function buildFrameUrl(ip, port, cam) {
+      return "http://"+ip+":"+port+"/picture/"+cam+"/frame/";
+    }
+    function setFrameUrl(url) {
+      var iframe = document.getElementById('streetFrame');
+      iframe.contentWindow.location = url;
+      document.location.href = url;
+    }
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      const expires = "; expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    window.props = {
+      ip: "localhost",
+      port: "8082",
+      cam: "1"
+    };
+    window.wallpaperPropertyListener = {
+      applyUserProperties: function(properties) {
+          if (properties.motioneyeip) window.props.ip = properties.motioneyeip.value;
+          if (properties.motioneyeport) window.props.port = properties.motioneyeport.value;
+          if (properties.motioneyecamera) window.props.cam = properties.motioneyecamera.value;
+          let url = buildFrameUrl(window.props.ip, window.props.port, window.props.cam);
+          console.log(url);
+          if (properties.motioneyeusername) setCookie("meye_username", properties.motioneyeusername, 999);
+          if (properties.motioneyepasswordhash) setCookie("meye_password_hash", properties.motioneyepasswordhash, 999);
+          setFrameUrl(url);
+      },
+    };
+    console.log("Page loaded.");
+  </script>
+</body>
+</html>

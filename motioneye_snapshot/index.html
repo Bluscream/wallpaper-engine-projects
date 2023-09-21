@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <title>CCTV</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    #streetFrame {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="streetFrame" src="http://localhost:8765/picture/1/current/?_username=admin"></iframe>
+  <script>
+    function reloadFrame() {
+      var iframe = document.getElementById('streetFrame');
+      iframe.contentWindow.location.reload();
+    }
+    // var div = document.getElementById("streetFrame");
+    // div.onload = function() {
+    //   // div.style.height = div.contentWindow.document.body.scrollHeight + 'px';
+    // }
+    function buildFrameUrl(ip, port, name, signature, camera) {
+      return "http://minopia.de:8099/http://"+ip+":"+port+"/picture/"+camera+"/current/?_username="+name+"&_signature="+signature;
+    }
+    function setFrameUrl(url) {
+      var iframe = document.getElementById('streetFrame');
+      iframe.contentWindow.location = url;
+    }
+    window.props = {
+      ip: "",
+      port: "",
+      name: "admin",
+      pw: "",
+      cam: ""
+    };
+    window.wallpaperPropertyListener = {
+      applyUserProperties: function(properties) {
+          if (properties.motioneyeip) window.props.ip = properties.motioneyeip.value;
+          if (properties.motioneyeport) window.props.port = properties.motioneyeport.value;
+          if (properties.adminsignature) window.props.pw = properties.adminsignature.value;
+          if (properties.camera) window.props.cam = properties.camera.value;
+          setFrameUrl(buildFrameUrl(window.props.ip, window.props.port, window.props.pw, window.props.cam));
+      },
+    };
+    setInterval(reloadFrame, 3000);
+  </script>
+</body>
+</html>

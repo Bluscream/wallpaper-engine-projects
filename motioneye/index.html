@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <title>CCTV - Redirecting ...</title>
+</head>
+<body>
+  <script>
+    console.log("Page loading...");
+    function buildStreamUrl(ip, port, username, password) {
+      return "http://"+username+":"+password+"@"+ip+":"+port+"/";
+    }
+    function setUrl(url) {
+      document.location.href = url;
+    }
+    window.props = {
+      ip: "localhost",
+      port: "8082",
+      username: "admin",
+      password: ""
+    };
+    window.wallpaperPropertyListener = {
+      applyUserProperties: function(properties) {
+          if (properties.motioneyeip) window.props.ip = properties.motioneyeip.value;
+          if (properties.motioneyeport) window.props.port = properties.motioneyeport.value;
+          if (properties.username) window.props.username = properties.username.value;
+          if (properties.password) window.props.password = properties.password.value;
+          let url = buildStreamUrl(window.props.ip, window.props.port, window.props.username, window.props.password);
+          console.log(url);
+          setUrl(url);
+      },
+    };
+    console.log("Page loaded.");
+  </script>
+</body>
+</html>
